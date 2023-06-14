@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Room {
+  id        Int      @id @default(autoincrement())
+  name      String
+  maxUsers  Int      @default(10)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  email       String   @unique
+  displayName String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+}
+
+model Topic {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+  roomId      Int
+
+  @@index([roomId], map: "roomId")
+}
+
+model Vote {
+  id        Int      @id @default(autoincrement())
+  vote      Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  userId    Int
+  topicId   Int
+
+  @@unique([userId, topicId])
+  @@index([userId], map: "userId")
+  @@index([topicId], map: "topicId")
+}

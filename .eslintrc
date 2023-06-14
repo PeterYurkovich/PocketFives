@@ -1,0 +1,23 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": ["@nuxtjs/eslint-config-typescript"],
+  "overrides": [
+    {
+      "files": ["./server/**/*.ts"],
+      "rules": {
+        "no-console": [
+          "error",
+          {
+            "allow": ["info", "warn", "trace", "error"]
+          }
+        ],
+        "semi": [2, "always"],
+        "indent": ["error", 2]
+      }
+    }
+  ]
+}
