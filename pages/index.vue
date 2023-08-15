@@ -46,7 +46,7 @@
               >
                 New Room
               </button>
-              <Icon v-if="newRoomLoading" name="tabler:circle-dashed" size="24px mt-3" class="animate-spin" />
+              <Icon v-if="newRoomLoading" name="tabler:circle-dashed" size="24px" class="animate-spin  mt-3" />
             </div>
             <div class="flex flex-row justify-center">
               <button
